@@ -4,7 +4,7 @@ import time
 class kikusui_plz4w():
 
     def __init__(self, pyvisa_instr):
-        self.plz4w = pyvisa_instr  # this is the pyvisa instrument, rm.open_resource('USB0::0x0B3E::0x1005::VB001586::INSTR')
+        self.plz4w = pyvisa_instr  # this is the pyvisa instrument, rm.open_resource('USB0::0x0A7E::0x1205::VB011286::INSTR')
 
     def get_all_scpi_list(self):
         result_list = [ ]
