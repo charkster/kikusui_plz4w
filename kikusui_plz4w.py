@@ -4,7 +4,7 @@ import time
 class kikusui_plz4w():
 
     def __init__(self, pyvisa_instr):
-        self.plz4 = pyvisa_instr  # this is the pyvisa instrument, rm.open_resource('USB0::0x0B3E::0x1005::VB001586::INSTR')
+        self.plz4w = pyvisa_instr  # this is the pyvisa instrument, rm.open_resource('USB0::0x0B3E::0x1005::VB001586::INSTR')
 
     def get_all_scpi_list(self):
         result_list = [ ]
@@ -12,7 +12,7 @@ class kikusui_plz4w():
             for command in dict:
                 time.sleep(0.1)
                 # print(command.format("?"))
-                result = (self.plz4.query(command.format("?"))).rstrip('\r\n')
+                result = (self.plz4w.query(command.format("?"))).rstrip('\r\n')
                 result = " " + result
                 result_list.append(command.format(result))
                 # print(command.format(result))
@@ -167,12 +167,3 @@ class kikusui_plz4w():
                                "OUTPut:TIMer 0",
                                "OUTPut:SHORt 0",
                                "INIT:CONT 0" ]
-
-import pyvisa
-
-rm = pyvisa.ResourceManager()
-# print(rm.list_resources())
-eload = kikusui_plz4w(rm.open_resource('USB0::0x0B3E::0x1005::VB001586::INSTR'))
-#eload.plz4.write('*RST')
-time.sleep(2)
-print(eload.get_unique_scpi_list())
