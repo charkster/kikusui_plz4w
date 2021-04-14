@@ -1,0 +1,8 @@
+import pyvisa
+
+rm = pyvisa.ResourceManager()
+# print(rm.list_resources())
+eload = kikusui_plz4w(rm.open_resource('USB0::0x023A::0x1027::VB011886::INSTR'))
+#eload.plz4w.write('*RST')
+time.sleep(2)
+print(eload.get_unique_scpi_list())
