@@ -1,4 +1,5 @@
 import pyvisa
+from kikusui_plz4w import kikusui_plz4w
 
 rm = pyvisa.ResourceManager()
 # print(rm.list_resources())
